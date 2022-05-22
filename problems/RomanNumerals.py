@@ -6,15 +6,15 @@ thresholds = {
     'C': 100,
     'D': 500,
     'M': 1000,
-    '_': 1000,
-    '_': 5000,
-    '_': 5000,
+    '': 1000,
+    '': 5000,
 }
 
 
 class RomanNumerals:
     def to_roman(self, val):
-        if val < 1 or val > 4000: return ''
+        if val < 1 and val > 4000: return ''
+        
         roman = ''
         digits = str(val)
         roman_thresholds = list(thresholds.keys())
@@ -46,29 +46,24 @@ class RomanNumerals:
                         roman += roman_one_based_thresholds[index] + roman_one_based_thresholds[digit]
 
         return roman
-    def from_roman(roman_num):
+    def from_roman(self, roman_num):
         roman_num = roman_num.upper()
         roman_num_len = len(roman_num)
         integer = 0
+        i = 0
 
-        ending = {
-            'IX': 9,
-            'IV': 4,
-            'VI': 6
-        }
-
-        for i, r in enumerate(roman_num):
+        while i < roman_num_len:
             has_next = i + 1 < roman_num_len
-            curr_n = thresholds[roman_num[i]]
-            next_n = has_next and thresholds[roman_num[i + 1]]
+            th = thresholds[roman_num[i]]
+            next_th = has_next and thresholds[roman_num[i + 1]]
 
-            if has_next and (roman_num[i] + roman_num[i+1]) in ending and roman_num.endswith(roman_num[i] + roman_num[i+1]):
-                integer += ending[roman_num[i] + roman_num[i+1]]
-                break
-            elif curr_n < next_n:
-                integer += next_n - curr_n
+            if th < next_th:
+                integer += next_th - th
+                i = i + 1 # 2 step next
             else:
-                integer += curr_n
+                integer += th
+
+            i += 1
         return integer
 
-print(RomanNumerals().to_roman(1429)) # MCDXXIX
+print(RomanNumerals().to_roman(3999))
