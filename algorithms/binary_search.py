@@ -1,15 +1,20 @@
 # binary search in sorted array
 
 def binary_search(arr, key):
-    max = len(arr)
-    mid = int(max / 2)
-    
-    if key > arr[mid]:
-        return binary_search(arr[mid:], key)
-    
-    if key < arr[mid]:
-        return binary_search(arr[:mid], key)
-    
-    return key
+    try:
+        max = len(arr)
+        mid = int(max / 2)
+        
+        if key > arr[mid]:
+            return binary_search(arr[mid:], key)
+        
+        if key < arr[mid]:
+            return binary_search(arr[:mid], key)
+        
+        return key # key founded
+    except:
+        return -1 # not founded
 
-print(binary_search([1,2,3,4,5,6,7,8,9,10], 9))
+# time complexity of search operation: O(log n)
+
+print(binary_search([1,2,3,4,5,6,7,8,9,10], 2))
