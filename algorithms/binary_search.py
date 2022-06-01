@@ -15,6 +15,7 @@ def binary_search(arr, key):
     except:
         return -1 # not founded
 
-# time complexity of search operation: O(log n)
+# time complexity
+# average: O(log n)
 
 print(binary_search([1,2,3,4,5,6,7,8,9,10], 2))
