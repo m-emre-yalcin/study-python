@@ -12,7 +12,7 @@ def selection_sort(array):
                 min_idx = i
          
         # put min at the correct position
-        (array[step], array[min_idx]) = (array[min_idx], array[step])
+        array[step], array[min_idx] = array[min_idx], array[step]
     return array
 
 # time complexity

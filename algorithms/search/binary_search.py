@@ -3,7 +3,7 @@
 def binary_search(arr, key):
     try:
         max = len(arr)
-        mid = int(max / 2)
+        mid = max // 2
         
         if key > arr[mid]:
             return binary_search(arr[mid:], key)
