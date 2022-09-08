@@ -1,4 +1,5 @@
 /**
+ * Must be 9x9 board
  * @param {character[][]} board
  * @return {boolean}
  */
