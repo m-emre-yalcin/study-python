@@ -1,8 +1,5 @@
 function buildPath(path, payload) {
-  return path.replace(/(:.*?(?=[/?]))|({.*?})/ig, (m, o, s) => {
-    m = m.replace(/[:{}]/g, '')
-    return m ? payload[m] : o
-  })
+  return path.replace(/(:.*?(?=[/?]))|({.*?})/ig, (m, o) => m.slice(1) ? payload[m.replace(/[:{}]/g, '')] : o)
 }
 
 // function buildPath (path, payload) {
