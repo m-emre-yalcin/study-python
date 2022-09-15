@@ -1,0 +1,1 @@
+const parse = str => str.split(' -> ').slice(0, -1).reduceRight((a, b) => new Node(+b, a), null)
